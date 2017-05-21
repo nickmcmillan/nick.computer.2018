@@ -1,0 +1,266 @@
+html {
+    font-size: 100%;
+    min-height: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.5;
+        filter: saturate(0%);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+    }
+}
+
+body {
+    overflow: hidden;
+    position: fixed;
+    background-color: #eceff7;
+    margin: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: common-ligatures;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    animation: fadeIn 2000ms cubic-bezier(0.175, 0.9, 0.32, 1.2) forwards;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+.svg {
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+}
+
+a {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+}
+
+a:hover,
+a:focus {
+    color: inherit;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+button {
+    color: inherit; /* 1 */
+    font: inherit; /* 2 */
+    margin: 0; /* 3 */
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    text-align: left;
+}
+
+button:focus {
+    outline: 0;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+label,
+summary {
+    touch-action: manipulation;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ball {
+    cursor: -webkit-grab;
+    mix-blend-mode: multiply;
+    transition: opacity 200ms ease;
+    will-change: opacity;
+}
+
+.ball--title {
+    display: none;
+}
+
+.logo {
+    margin-bottom: 0.7rem;
+}
+
+.panel {
+    transform: scale(0.9);
+    transform-origin: top left;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.panel_inner {
+    max-width: 210px;
+    padding-bottom: 1rem;
+}
+
+.trigger {
+    display: none;
+}
+
+.close {
+    display: none;
+}
+
+.click-me-suckah {
+    display: flex;
+    align-items: center;
+    pointer-events: all;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 0.15rem;
+    fill: #81b4cf;
+    margin-left: -0.375rem;
+}
+
+h1,
+h2 {
+    font-size: 1.3rem;
+    margin: 0 0 0.7rem;
+}
+
+h3 {
+    margin: 0 0 1rem;
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+.hide-tiny {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .click-me-suckah {
+        pointer-events: none;
+    }
+
+    .open .click-me-suckah {
+        pointer-events: all;
+    }
+
+    .title {
+        position: absolute;
+    }
+
+    .ball:hover {
+        opacity: 0.85;
+    }
+
+    .held {
+        cursor: -webkit-grabbing;
+    }
+
+    .ball--title {
+        display: block;
+        mix-blend-mode: inherit; /* firefox */
+    }
+
+    .ball--title:hover {
+        opacity: 1;
+    }
+
+    .panel {
+        padding: 0;
+        transform: none;
+        top: 0;
+        will-change: transform;
+    }
+
+    .trigger {
+        height: 320px;
+        width: 200px;
+        display: block;
+    }
+
+    .panel_inner {
+        opacity: 0;
+        transform: scale(0.75);
+        padding: 0 1rem;
+        transition: all 350ms cubic-bezier(0.175, 0.9, 0.32, 1.2);
+        will-change: opacity, transform;
+    }
+
+    .open .panel_inner {
+        opacity: 1;
+        transform: translateX(100%);
+        pointer-events: all;
+    }
+
+    .open #svg-el {
+        pointer-events: none;
+    }
+
+    .ball--title polygon {
+        opacity: 0;
+        transition: transform 350ms cubic-bezier(0.175, 0.9, 0.32, 1.2), opacity 500ms cubic-bezier(0.25, 0.85, 0.25, 1);
+        will-change: opacity, transform;
+    }
+
+    .open .ball--title polygon {
+        opacity: 0.75;
+        transform: scale(7);
+    }
+
+    .close {
+        color: transparent;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: -1;
+        pointer-events: none;
+        display: block;
+    }
+
+    .open .close {
+        pointer-events: auto;
+    }
+
+    .hide-tiny {
+        display: block;
+    }
+}
