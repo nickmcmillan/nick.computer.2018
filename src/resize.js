@@ -2,14 +2,14 @@
 import globals from './globals'
 import {debounce} from './utilities'
 
-const resize = debounce(function() {
+const resize = debounce(() => {
     globals.w = window.innerWidth
     globals.h = window.innerHeight
 
     // reset ball position just like on init
-    globals.ballArr.forEach(function(el) {
-        el.x = globals.w / 2 + Math.random()
-        el.y = globals.h / 2 + Math.random()
+    globals.ballArr.forEach(ball => {
+        ball.x = globals.w / 2 + Math.random()
+        ball.y = globals.h / 2 + Math.random()
     })
 }, 500)
 

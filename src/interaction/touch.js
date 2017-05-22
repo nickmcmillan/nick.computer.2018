@@ -5,11 +5,14 @@ import store from '../store';
 
 
 globals.doc.addEventListener('touchstart', e => {
-    e.preventDefault() // need this cos userscalable was removed from ios10
 
     closest(e.changedTouches[0].target, function(el) {
 
         if (el.tagName === 'g') {
+             // need this cos userscalable was removed from ios10
+             // only put it in here, any further up and it would prevent all taps,
+             // meaning tapping urls or literally anything won't work.
+            e.preventDefault()
 
             let newID = parseInt(el.id, 10);
             let positionX = globals.ballArr[newID].x;

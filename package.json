@@ -1,13 +1,16 @@
 {
-  "name": "nick-mcmillan",
+  "name": "nick-computer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classlist-polyfill": "^1.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "react-scripts": "1.0.2"
+    "react-scripts": "1.0.2",
+    "stylelint": "^7.10.1",
+    "stylelint-config-standard": "^16.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

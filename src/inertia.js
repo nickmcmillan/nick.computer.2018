@@ -10,8 +10,8 @@ import applyBoundForce from './inertia/applyBoundForce';
 
 export default function() {
     store.heldBalls.forEach(function(i) {
-        globals.ballArr[i].velocityX *= options.friction;
-        globals.ballArr[i].velocityY *= options.friction;
+        globals.ballArr[i].velocityX *= options.FRICTION;
+        globals.ballArr[i].velocityY *= options.FRICTION;
 
         applyBoundForce(i);
         applyDragForce(i);
@@ -36,5 +36,5 @@ export default function() {
             globals.ballArr[i].x = globals.ballArr[i].positionX;
             globals.ballArr[i].y = globals.ballArr[i].positionY;
         }
-    });
+    })
 }

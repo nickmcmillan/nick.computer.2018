@@ -14,7 +14,7 @@ function right(i) {
     let velocity = globals.ballArr[i].velocityX
     let distance = options.rightBound - position;
     let	force = distance * 0.1;
-    let rest = position + ( velocity + force ) / ( 1 - options.friction );
+    let rest = position + ( velocity + force ) / ( 1 - options.FRICTION );
 
     // if in bounds, apply force to align at bounds
     if ( rest > options.rightBound ) {
@@ -37,7 +37,7 @@ function left(i) {
     let velocity = globals.ballArr[i].velocityX
     let distance = options.leftBound - position;
     let	force = distance * 0.1;
-    let rest =  position + ( velocity + force ) / ( 1 - options.friction );
+    let rest =  position + ( velocity + force ) / ( 1 - options.FRICTION );
 
     if (rest < options.leftBound ) {
         applyForceX( force, i)
@@ -60,7 +60,7 @@ function top(i) {
     let velocity = globals.ballArr[i].velocityY
     let distance = options.topBound - position;
     let	force = distance * 0.1;
-    let rest =  position + ( velocity + force ) / ( 1 - options.friction );
+    let rest =  position + ( velocity + force ) / ( 1 - options.FRICTION );
 
     if (rest < options.topBound) {
         applyForceY( force, i)
@@ -82,7 +82,7 @@ function bottom(i) {
     let velocity = globals.ballArr[i].velocityY
     let distance = options.bottomBound - position;
     let	force = distance * 0.1;
-    let rest =  position + ( velocity + force ) / ( 1 - options.friction );
+    let rest =  position + ( velocity + force ) / ( 1 - options.FRICTION );
 
     if (rest > options.bottomBound) {
         applyForceY( force, i)

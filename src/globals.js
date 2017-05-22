@@ -1,12 +1,27 @@
 /* globals document, window, navigator */
-const userAgent = navigator.userAgent
-const isIE = userAgent.indexOf('MSIE ') > -1 || userAgent.indexOf('Trident/') > -1
+
+const isShit = () => {
+    if (/MSIE 10/i.test(navigator.userAgent)) {
+       // This is internet explorer 10
+       return true
+    }
+
+    if (/MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent)) {
+        // This is internet explorer 9 or 11
+        return true
+    }
+
+    if (/Edge\/\d./i.test(navigator.userAgent)){
+       // This is Microsoft Edge
+       return true
+    }
+}
 
 export default {
     doc: document,
     animating: undefined,
     ballArr: [],
-    isIE: isIE,
+    isIE: isShit(),
     w: window.innerWidth,
     h: window.innerHeight,
     get svgEl() {

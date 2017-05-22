@@ -10,18 +10,16 @@ let appendedBalls = []; // store a reference to all balls in here, so we don't n
 
 const INNER_WIDTH = globals.w
 const INNER_HEIGHT = globals.h
-const INNER_WIDTH_HALF = INNER_WIDTH / 2
-const INNER_HEIGHT_HALF = INNER_HEIGHT / 2
 
 const panelEl = globals.doc.getElementById('panel')
 
-const addBall = (i, fill, radius, isTitleBall) => {
+export const addBall = (i, fill, radius, isTitleBall) => {
 
     let newBall = {
         id: i,
         fill: fill || colors[Math.floor(Math.random() * colors.length)],
-        x: INNER_WIDTH_HALF + Math.random(),
-        y: INNER_HEIGHT_HALF + Math.random(),
+        x: INNER_WIDTH / 2 + Math.random(),
+        y: INNER_HEIGHT / 2 + Math.random(),
         vx: 0,
         vy: 0,
         positionX: 0,
@@ -35,15 +33,16 @@ const addBall = (i, fill, radius, isTitleBall) => {
         r: radius || random(options.MIN_SIZE, options.MAX_SIZE),
         isDragging: false,
         isTitleBall
-    };
+    }
 
-    globals.ballArr.push(newBall);
+    globals.ballArr.push(newBall)
 
-};
+}
 
 
-const circlePack = function(i, currentBall) {
-    // circle packing based on: http://codepen.io/jun-lu/pen/rajrJx
+// circle packing based on: http://codepen.io/jun-lu/pen/rajrJx
+const circlePack = (i, currentBall) => {
+
     let c
     let dx
     let dy
@@ -67,7 +66,7 @@ const circlePack = function(i, currentBall) {
 
         if (d < l) {
 
-            let f = (options.attachment - d / l) * r
+            let f = (1 - d / l) * r
             let t = Math.atan2(dy, dx)
 
             // set right edge && left edge boundaries
@@ -94,7 +93,7 @@ const manageBall = function(i, currentBall) {
         let polyEl = globals.doc.createElementNS('http://www.w3.org/2000/svg', 'polygon')
 
         polyEl.setAttribute('fill', currentBall.fill)
-        polyEl.setAttribute('points', getPolyPoints(currentBall.r * options.BALL_ROUGHNESS, currentBall.r))
+        polyEl.setAttribute('points', getPolyPoints(currentBall.r * options.ROUGHNESS, currentBall.r))
 
         gEl.id = i
         gEl.classList.add('ball')
@@ -125,12 +124,16 @@ const manageBall = function(i, currentBall) {
 
     if (!globals.isIE) {
         gEl.style.transform = 'translate3d(' + roundedX + 'px, ' + roundedY + 'px, 0)'
-        if (currentBall.isTitleBall && globals.w > 768) {
+        if (currentBall.isTitleBall && globals.w >= 768) {
             panelEl.style.transform = 'translate3d(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px, 0)'
         }
     } else {
         //http://stackoverflow.com/a/28776528
         gEl.setAttribute('transform', 'translate(' + roundedX + ', ' + roundedY + ')')
+
+        if (currentBall.isTitleBall && globals.w >= 768) {
+            panelEl.style.transform = 'translate(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px)'
+        }
     }
 }
 
@@ -159,7 +162,6 @@ function startAnimationLoop() {
     }
 }
 
-
 // function stopAnimationLoop() {
 //     if (globals.animating) {
 //         cancelAnimationFrame(globals.animating);
@@ -170,33 +172,11 @@ function startAnimationLoop() {
 //     stopAnimationLoop();
 // }, 3000);
 
-
 // generate the balls!
 for (let i = 0; i < options.BALL_COUNT; i++) {
     addBall(i);
 }
 addBall(options.BALL_COUNT, '#000', 100, true);
-
-globals.doc.getElementById('close').addEventListener('click', ()=>{
-    globals.doc.body.classList.remove('open')
-})
-
-let x
-let button = globals.doc.getElementById('trigger')
-button.addEventListener('mousedown', e =>{
-    x = e.pageX
-})
-button.addEventListener('mouseup', e => {
-    if (e.pageX === x) {
-        // it's a click!
-        globals.doc.body.classList.add('open')
-    }
-})
-
-globals.doc.onkeydown = () => {
-    addBall(options.BALL_COUNT + 1)
-    options.BALL_COUNT++
-}
 
 
 startAnimationLoop();

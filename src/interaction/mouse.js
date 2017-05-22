@@ -57,8 +57,8 @@ globals.doc.addEventListener('mouseup', e => {
         }
     })
 
-    globals.ballArr.map(obj=>{
-        obj.isDragging = false
+    globals.ballArr.forEach(ball => {
+        ball.isDragging = false
     })
 
 })
