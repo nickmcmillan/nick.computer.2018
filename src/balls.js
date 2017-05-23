@@ -126,6 +126,8 @@ const manageBall = function(i, currentBall) {
         gEl.style.transform = 'translate3d(' + roundedX + 'px, ' + roundedY + 'px, 0)'
         if (currentBall.isTitleBall && globals.w >= 768) {
             panelEl.style.transform = 'translate3d(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px, 0)'
+        } else if (currentBall.isTitleBall && globals.w < 768) {
+            panelEl.style.transform = 'none'
         }
     } else {
         //http://stackoverflow.com/a/28776528
@@ -133,6 +135,8 @@ const manageBall = function(i, currentBall) {
 
         if (currentBall.isTitleBall && globals.w >= 768) {
             panelEl.style.transform = 'translate(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px)'
+        } else if (currentBall.isTitleBall && globals.w < 768) {
+            panelEl.style.transform = 'none'
         }
     }
 }

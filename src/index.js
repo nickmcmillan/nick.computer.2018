@@ -1,4 +1,4 @@
-import registerServiceWorker from './registerServiceWorker';
+//import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 import 'classlist-polyfill'
@@ -16,4 +16,4 @@ import './interaction/touch'
 import './interaction/mouse'
 import './interaction/button'
 
-registerServiceWorker();
+//registerServiceWorker();
