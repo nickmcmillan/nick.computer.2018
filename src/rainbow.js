@@ -1,3 +1,4 @@
+/* globals document, window */
 // https://codepen.io/hey-nick/pen/kkboWO
 
 import globals from './globals'
@@ -49,7 +50,7 @@ export const startAnimatingRainbow = () => {
 
 export const stopAnimatingRainbow = () => {
     if (globals.animatingRainbow) {
-        cancelAnimationFrame(globals.animatingRainbow)
+        window.cancelAnimationFrame(globals.animatingRainbow)
         globals.animatingRainbow = undefined
     }
 }
