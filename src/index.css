@@ -129,8 +129,16 @@ ul {
     will-change: opacity;
 }
 
+.open .ball {
+    opacity: 0.8;
+}
+
 .ball--title {
     display: none;
+}
+
+.open .ball--title {
+    opacity: 1;
 }
 
 .logo {
