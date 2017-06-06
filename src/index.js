@@ -4,6 +4,8 @@ import './index.css';
 import 'classlist-polyfill'
 import './polyfills/arrayIncludes'
 
+import './rainbow'
+
 import './globals'
 import './utilities'
 import './resize'

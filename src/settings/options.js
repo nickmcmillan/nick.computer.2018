@@ -6,7 +6,7 @@ export default {
     MIN_SIZE: globals.w < 1024 ? 80 : globals.w < 1600 ? 120 : 150, // phone, tablet, big fella
     MAX_SIZE: globals.w < 1024 ? 200 : globals.w < 1600 ? 250 : 400,
     SPREAD_SPEED: 0.015, // how fast react to each other
-    BALL_COUNT: globals.w < 1024 ? 6 : globals.w < 1600 ? 6 : 8,
+    BALL_COUNT: globals.w < 1024 ? 6 : globals.w < 1600 ? 6 : 10,
     FRICTION: 0.95, // for inertia
     topBound: 0,
     leftBound: 0,
