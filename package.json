@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "classlist-polyfill": "^1.2.0"
-
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
