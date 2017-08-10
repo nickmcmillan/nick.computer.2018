@@ -47,6 +47,22 @@ body {
     animation: fadeIn 2.75s cubic-bezier(0.175, 0.9, 0.32, 1.2) forwards;
 }
 
+.bg {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+    will-change: opacity;
+    z-index: -1;
+}
+
+.open .bg {
+    opacity: 1;
+}
+
 .svg {
     height: 100%;
     width: 100vw;
@@ -113,8 +129,16 @@ ul {
     will-change: opacity;
 }
 
+.open .ball {
+    opacity: 0.8;
+}
+
 .ball--title {
     display: none;
+}
+
+.open .ball--title {
+    opacity: 1;
 }
 
 .logo {
