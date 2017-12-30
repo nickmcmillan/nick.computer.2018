@@ -130,7 +130,10 @@ ul {
 }
 
 .open .ball {
-    opacity: 0.8;
+    opacity: 0.4;
+}
+.open polygon {
+    fill: rgba(0,0,0,0.5);
 }
 
 .ball--title {
