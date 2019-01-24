@@ -1,4 +1,5 @@
 /* globals clearTimeout, setTimeout */
+import globals from './globals'
 
 // http://davidwalsh.name/javascript-debounce-function
 export const debounce = function(func, wait, immediate) {
@@ -27,3 +28,8 @@ export const closest = (el, fn) => {
 }
 
 export const random = (min, max) => parseInt( Math.random() * (max - min) + min, 10)
+
+
+if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+  globals.doc.documentElement.classList.add('safari')
+}

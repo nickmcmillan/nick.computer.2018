@@ -11,15 +11,15 @@ let appendedBalls = []; // store a reference to all balls in here, so we don't n
 const INNER_WIDTH = globals.w
 const INNER_HEIGHT = globals.h
 
-const panelEl = globals.doc.getElementById('panel')
+// const panelEl = globals.doc.getElementById('panel')
 
-export const addBall = (i, fill, radius, isTitleBall) => {
+export const addBall = (i, fill, radius) => {
 
     let newBall = {
         id: i,
         fill: fill || colors[Math.floor(Math.random() * colors.length)],
-        x: INNER_WIDTH / 2 + Math.random(),
-        y: INNER_HEIGHT / 2 + Math.random(),
+        x: INNER_WIDTH / 4 + Math.random(),
+        y: INNER_HEIGHT / 4 + Math.random(),
         vx: 0,
         vy: 0,
         positionX: 0,
@@ -32,7 +32,7 @@ export const addBall = (i, fill, radius, isTitleBall) => {
         dragStartPositionY: 0,
         r: radius || random(options.MIN_SIZE, options.MAX_SIZE),
         isDragging: false,
-        isTitleBall
+        // isTitleBall
     }
 
     globals.ballArr.push(newBall)
@@ -99,11 +99,11 @@ const manageBall = function(i, currentBall) {
         gEl.classList.add('ball')
         gEl.appendChild(polyEl)
 
-        if (currentBall.isTitleBall) {
-            const titleHTML = globals.doc.getElementById('foreignObject');
-            gEl.classList.add('ball--title')
-            gEl.appendChild(titleHTML)
-        }
+        // if (currentBall.isTitleBall) {
+        //     const titleHTML = globals.doc.getElementById('foreignObject');
+        //     gEl.classList.add('ball--title')
+        //     gEl.appendChild(titleHTML)
+        // }
 
         // create a record of appended ball
         appendedBalls.push(gEl)
@@ -124,20 +124,20 @@ const manageBall = function(i, currentBall) {
 
     if (!globals.isIE) {
         gEl.style.transform = 'translate3d(' + roundedX + 'px, ' + roundedY + 'px, 0)'
-        if (currentBall.isTitleBall && globals.w >= 768) {
-            panelEl.style.transform = 'translate3d(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px, 0)'
-        } else if (currentBall.isTitleBall && globals.w < 768) {
-            panelEl.style.transform = 'none'
-        }
+        // if (currentBall.isTitleBall && globals.w >= 768) {
+        //     panelEl.style.transform = 'translate3d(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px, 0)'
+        // } else if (currentBall.isTitleBall && globals.w < 768) {
+        //     panelEl.style.transform = 'none'
+        // }
     } else {
         //http://stackoverflow.com/a/28776528
         gEl.setAttribute('transform', 'translate(' + roundedX + ', ' + roundedY + ')')
 
-        if (currentBall.isTitleBall && globals.w >= 768) {
-            panelEl.style.transform = 'translate(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px)'
-        } else if (currentBall.isTitleBall && globals.w < 768) {
-            panelEl.style.transform = 'none'
-        }
+        // if (currentBall.isTitleBall && globals.w >= 768) {
+        //     panelEl.style.transform = 'translate(' + (roundedX - 100) + 'px, ' + (roundedY - 160) + 'px)'
+        // } else if (currentBall.isTitleBall && globals.w < 768) {
+        //     panelEl.style.transform = 'none'
+        // }
     }
 }
 
@@ -180,7 +180,6 @@ function startAnimationLoop() {
 for (let i = 0; i < options.BALL_COUNT; i++) {
     addBall(i);
 }
-addBall(options.BALL_COUNT, '#000', 100, true);
-
+// addBall(options.BALL_COUNT, '#000', 100, true);
 
 startAnimationLoop();
