@@ -8,8 +8,8 @@ const resize = debounce(() => {
 
     // reset ball position just like on init
     globals.ballArr.forEach(ball => {
-        ball.x = globals.w / 2 + Math.random()
-        ball.y = globals.h / 2 + Math.random()
+        ball.x = globals.w / 4 + Math.random()
+        ball.y = globals.h / 4 + Math.random()
     })
 }, 500)
 
