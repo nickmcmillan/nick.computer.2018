@@ -20,7 +20,6 @@ const isShit = () => {
 export default {
   doc: document,
   animating: undefined,
-  animatingRainbow: undefined,
   ballArr: [],
   isIE: isShit(),
   w: window.innerWidth,

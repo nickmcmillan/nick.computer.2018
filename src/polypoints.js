@@ -3,15 +3,15 @@
 
 export const setLinePoints = iterations => {
     let point
-    let pointList = {}
-    pointList.first = { x: 0, y: 1 }
-
+    const pointList = {}
+    
     const lastPoint = { x: 1, y: 1 }
     let nextPoint
     let dx
     let newX
     let newY
-
+    
+    pointList.first = { x: 0, y: 1 }
     pointList.first.next = lastPoint
 
     for (let i = 0; i < iterations; i++) {
@@ -63,6 +63,9 @@ export const getPolyPoints = (minBallSize, maxBallSize) => {
 
         coordString = coordString + (Math.round(x0 * 100) / 100 + ',' + Math.round(y0 * 100) / 100 + ' ')
     }
+
+    console.log(coordString)
+    
 
     return coordString
 }
